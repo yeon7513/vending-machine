@@ -25,32 +25,38 @@
                 <div class="product-item lemon">
                   <i class="fa-solid fa-lemon"></i>
                   <p>레모네이드</p>
-                  <button class="btn item-btn">1800원</button>
+                  <span>수량 : 5개</span>
+                  <button class="btn item-btn" data-product="lemon" data-price="1800">1800원</button>
                 </div>
                 <div class="product-item apple">
                   <i class="fa-solid fa-apple-whole"></i>
                   <p>사과주스</p>
-                  <button class="btn item-btn">2000원</button>
+                  <span>수량 : 5개</span>
+                  <button class="btn item-btn" data-product="apple-whole" data-price="2000">2000원</button>
                 </div>
                 <div class="product-item carrot">
                   <i class="fa-solid fa-carrot"></i>
                   <p>당근주스</p>
-                  <button class="btn item-btn">2000원</button>
+                  <span class="product-qty">수량 : 5개</span>
+                  <button class="btn item-btn" data-product="carrot" data-price="2000">2000원</button>
                 </div>
                 <div class="product-item water">
                   <i class="fa-solid fa-bottle-water"></i>
                   <p>생수</p>
-                  <button class="btn item-btn">1000원</button>
+                  <span class="product-qty">수량 : 5개</span>
+                  <button class="btn item-btn" data-product="bottle-water" data-price="1000">1000원</button>
                 </div>
                 <div class="product-item barley">
                   <i class="fa-solid fa-wheat-awn"></i>
                   <p>보리차</p>
-                  <button class="btn item-btn">1300원</button>
+                  <span class="product-qty">수량 : 5개</span>
+                  <button class="btn item-btn" data-product="wheat-awn" data-price="1300">1300원</button>
                 </div>
                 <div class="product-item green-tea">
                   <i class="fa-solid fa-seedling"></i>
                   <p>녹차</p>
-                  <button class="btn item-btn">1500원</button>
+                  <span class="product-qty">수량 : 5개</span>
+                  <button class="btn item-btn" data-product="seedling" data-price="1500">1500원</button>
                 </div>
               </div>
             </div>
@@ -58,50 +64,37 @@
               <h2 class="title">장바구니</h2>
               <div class="cart-list">
                 <ul>
-                  <li class="item before">
-                    <i class="fa-solid fa-lemon"></i>
-                    <p>레모네이드</p>
-                    <div class="btn-wrap">
-                      <button id="plus" class="btn qty-btn">+</button>
-                      <span id="qty-result">1</span>
-                      <button id="minus" class="btn qty-btn">-</button>
-                      <button id="delete-btn" class="btn">삭제</button>
-                    </div>
-                  </li>
+                  <li>물품을 추가해 주세요!</li>
                 </ul>
-                <button id="purchase" class="btn">구매하기</button>
+                <span id="cart-cost">합계 0원</span>
               </div>
+              <button id="purchase" class="btn" onclick="purchaseUpdate()">구매하기</button>
             </div>
           </section>
           <section>
             <div class="cash-in-hand">
               <h2 class="title">소지금</h2>
-              <p>25000원</p>
+              <span></span>
             </div>
             <div class="cash">
               <div class="input-amount">
                 <h2 class="title">투입 금액</h3>
-                <button id="thousand" class="money btn">1000원</button>
-                <button id="five-hundred" class="money btn">500원</button>
-                <button id="hundred" class="money btn">100원</button>
+                <button class="money btn" onclick="addCash(1000)">1000원</button>
+                <button class="money btn" onclick="addCash(500)">500원</button>
+                <button class="money btn" onclick="addCash(100)">100원</button>
               </div>
               <div class="remaining-amount">
                 <h2 class="title">남은 금액</h2>
-                <span>10000원</span>
+                <span>0원</span>
               </div>
               <div class="change">
-                <button id="get-change" class="btn">거스름돈 받기</button>
+                <button class="btn" onclick="getChange()">거스름돈 받기</button>
               </div>
             </div>
             <div class="purchase">
               <h2 class="title">구매 목록</h2>
               <div class="purchase-list">
                 <ul>
-                  <li class="item after">
-                    <i class="fa-solid fa-lemon"></i>
-                    <p>레모네이드</p>
-                    <span id="after-qty">1개</span>
-                  </li>
                 </ul>
               </div>
             </div>

@@ -57,6 +57,12 @@ body {
   color: var(--main-color);
 }
 
+.btn-wrap span {
+  display: inline-block;
+  width: 23px;
+  text-align: center;
+}
+
 .btn {
   appearance: none;
   padding: 5px 10px;
@@ -74,8 +80,13 @@ body {
 
 ul {
   overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 5px;
+  background-color: var(--main-color);
 }
-
 ul p {
   margin-left: 5px;
   flex-grow: 1;
@@ -106,6 +117,7 @@ header {
 main {
   overflow: hidden;
   display: flex;
+  /* height: 600px; */
   border-radius: 10px;
 }
 
@@ -116,7 +128,6 @@ section {
   flex-direction: column;
   gap: 20px;
   padding: 10px;
-  height: 540px;
   background-color: var(--common-color);
 }
 
@@ -139,6 +150,11 @@ section {
   font-size: 40px;
 }
 
+.product-item span {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
 i[class*='lemon'] {
   color: var(--lemon-color);
 }
@@ -151,32 +167,42 @@ i[class*='carrot'] {
 i[class*='water'] {
   color: var(--water-color);
 }
-i[class*='barley'] {
+i[class*='wheat-awn'] {
   color: var(--barley-color);
 }
-i[class*='green-tea'] {
+i[class*='seedling'] {
   color: var(--green-color);
 }
 
 .mechanism {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
-
+.mechanism > .title {
+  width: 100%;
+}
 .cart-list {
-  flex-grow: 1;
   display: flex;
-  gap: 5px;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 350px;
+  height: 180px;
+  margin-right: 5px;
 }
 .cart-list ul {
-  flex-grow: 1;
   padding: 10px;
-  border-radius: 5px;
-  background-color: var(--main-color);
-  outline: 1px dotted red;
+  border-radius: 5px 5px 0 0;
 }
+.cart-list #cart-cost {
+  display: block;
+  padding: 10px;
+  border-top: 2px dotted var(--accent-color);
 
+  border-radius: 0 0 5px 5px;
+  text-align: right;
+  background-color: var(--main-color);
+}
 .purchase {
   flex-grow: 1;
   display: flex;
@@ -185,6 +211,7 @@ i[class*='green-tea'] {
 .purchase-list {
   flex-grow: 1;
   padding: 10px;
+  height: 212px;
   border-radius: 5px;
   background-color: var(--main-color);
 }
@@ -201,7 +228,8 @@ i[class*='green-tea'] {
   background-color: var(--main-color);
 }
 
-.cash-in-hand p {
+.cash-in-hand span {
+  display: block;
   padding: 10px;
   border-radius: 5px;
   text-align: center;
@@ -216,6 +244,10 @@ i[class*='green-tea'] {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.item > span {
+  display: block;
+  margin-right: 10px;
 }
 
 #qty-result {
