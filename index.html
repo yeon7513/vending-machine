@@ -18,87 +18,53 @@
           <h1>Drink Mate</h1>
         </header>
         <main>
-          <section>
-            <div class="machine">
+          <div class="left-group">
+            <!-- 제품 버튼 그룹 -->
+            <section id="drinks">
               <h2 class="title">음료수</h2>
-              <div class="products">
-                <div class="product-item lemon">
-                  <i class="fa-solid fa-lemon"></i>
-                  <p>레모네이드</p>
-                  <span>수량 : 5개</span>
-                  <button class="btn item-btn" data-product="lemon" data-price="1800">1800원</button>
-                </div>
-                <div class="product-item apple">
-                  <i class="fa-solid fa-apple-whole"></i>
-                  <p>사과주스</p>
-                  <span>수량 : 5개</span>
-                  <button class="btn item-btn" data-product="apple-whole" data-price="2000">2000원</button>
-                </div>
-                <div class="product-item carrot">
-                  <i class="fa-solid fa-carrot"></i>
-                  <p>당근주스</p>
-                  <span class="product-qty">수량 : 5개</span>
-                  <button class="btn item-btn" data-product="carrot" data-price="2000">2000원</button>
-                </div>
-                <div class="product-item water">
-                  <i class="fa-solid fa-bottle-water"></i>
-                  <p>생수</p>
-                  <span class="product-qty">수량 : 5개</span>
-                  <button class="btn item-btn" data-product="bottle-water" data-price="1000">1000원</button>
-                </div>
-                <div class="product-item barley">
-                  <i class="fa-solid fa-wheat-awn"></i>
-                  <p>보리차</p>
-                  <span class="product-qty">수량 : 5개</span>
-                  <button class="btn item-btn" data-product="wheat-awn" data-price="1300">1300원</button>
-                </div>
-                <div class="product-item green-tea">
-                  <i class="fa-solid fa-seedling"></i>
-                  <p>녹차</p>
-                  <span class="product-qty">수량 : 5개</span>
-                  <button class="btn item-btn" data-product="seedling" data-price="1500">1500원</button>
-                </div>
-              </div>
-            </div>
-            <div class="mechanism">
+              <div id="products"></div>
+            </section>
+            <!-- 장바구니 -->
+            <section id="cart">
               <h2 class="title">장바구니</h2>
-              <div class="cart-list">
-                <ul>
-                  <li>물품을 추가해 주세요!</li>
+              <div class="cart-wrap bg">
+                <ul id="cart-list">
+                  <li>물품을 추가해 주세요.</li>
                 </ul>
-                <span id="cart-cost">합계 0원</span>
+                <div id="cart-cost">합계 <span>0</span>원</div>
               </div>
-              <button id="purchase" class="btn" onclick="purchaseUpdate()">구매하기</button>
-            </div>
-          </section>
-          <section>
-            <div class="cash-in-hand">
+              <button id="purchase-btn" class="btn" onclick="purchaseUpdate()">
+                구매하기
+              </button>
+            </section>
+          </div>
+          <div class="right-group">
+            <section id="possession">
               <h2 class="title">소지금</h2>
-              <span></span>
-            </div>
-            <div class="cash">
+              <div id="possessed-money" class="bg center"><span>0</span>원</div>
+            </section>
+            <section id="amount">
+              <h2 class="title">투입 금액</h2>
               <div class="input-amount">
-                <h2 class="title">투입 금액</h3>
-                <button class="money btn" onclick="addCash(1000)">1000원</button>
-                <button class="money btn" onclick="addCash(500)">500원</button>
-                <button class="money btn" onclick="addCash(100)">100원</button>
+                <button class="btn money" onclick="addCash(1000)">
+                  1000원
+                </button>
+                <button class="btn money" onclick="addCash(500)">500원</button>
+                <button class="btn money" onclick="addCash(100)">100원</button>
               </div>
-              <div class="remaining-amount">
-                <h2 class="title">남은 금액</h2>
-                <span>0원</span>
+              <h2 class="title">남은 금액</h2>
+              <div id="remaining-amount" class="bg center">
+                <span>0</span>원
               </div>
               <div class="change">
                 <button class="btn" onclick="getChange()">거스름돈 받기</button>
               </div>
-            </div>
-            <div class="purchase">
+            </section>
+            <section id="purchase">
               <h2 class="title">구매 목록</h2>
-              <div class="purchase-list">
-                <ul>
-                </ul>
-              </div>
-            </div>
-          </section>
+              <ul id="purchase-list" class="bg"></ul>
+            </section>
+          </div>
         </main>
       </div>
     </div>
