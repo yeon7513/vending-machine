@@ -28,11 +28,11 @@ remainingAmount.innerHTML = insertMoney;
 
 productArr.forEach((item) => {
   products.innerHTML += `
-      <div class="product-item bg">
+      <div class="product-item bg ${item.icon}">
         <i class="fa-solid fa-${item.icon}"></i>
         <p class="product-name">${item.name}</p>
         <p class="product-qty">수량 : ${item.qty}개</p>
-        <button class="btn product-btn" data-product="${item.icon}" data-price="${item.price}">${item.price}원</button>
+        <button class="btn product-btn" data-product="${item.icon}">${item.price}원</button>
       </div>
     `;
 });
@@ -82,7 +82,6 @@ productBtns.forEach((btn) => {
   // 각 제품을 클릭하면 장바구니에 들어간다.
   btn.addEventListener('click', function () {
     const productName = btn.getAttribute('data-product');
-    // const price = parseInt(btn.getAttribute('data-price'));
 
     const productObj = productArr.find((item) => item.icon === productName);
 
@@ -102,7 +101,6 @@ productBtns.forEach((btn) => {
       alert('품절된 상품입니다.');
       return false;
     }
-    console.log('productObj: ', productObj);
     addCart(productObj);
   });
 });
@@ -115,8 +113,6 @@ function addCart(product) {
   } else {
     cartArr.push({ ...product, qty: 1 });
   }
-  // console.log('cartArr: ', cartArr);
-  // console.log('cartItem: ', cartItem);
   cartUpdate();
 }
 
@@ -136,17 +132,19 @@ function cartUpdate() {
             <button class="btn plus-btn">+</button>
             <div class="cart-qty">${item.qty}</div>
             <button class="btn minus-btn">-</button>
-            <button class="btn delete-item">삭제</button>
+            <button class="btn delete-btn">삭제</button>
           </div>
         </li>
       `
     );
 
-    // console.log('item.qty: ', item.qty);
     totalPrice += item.price * item.qty;
   });
   cartList.scrollTop = cartList.offsetHeight;
   cartCost.innerHTML = totalPrice;
+  if (cartArr.length === 0) {
+    cartList.innerHTML = '<li>물품을 추가해 주세요.</li>';
+  }
 }
 
 // 장바구니 안에서 버튼을 조작할 수 있다.
@@ -156,7 +154,6 @@ function cartUpdate() {
 // => +버튼을 눌러서 음료수 수량이 0개가 되면 '품절'된다.
 // => -버튼을 눌러서 장바구니 안에서의 수량이 0개가 되면 장바구니 목록에서 삭제된다.
 cartList.addEventListener('click', (e) => {
-  // console.log(e.target);
   const liEl = e.target.closest('li.cart-item');
 
   if (!liEl) return;
@@ -168,11 +165,14 @@ cartList.addEventListener('click', (e) => {
   const deleteBtn = e.target.classList.contains('delete-btn');
 
   if (plusBtn) {
-    console.log(plusBtn);
     updateCart(idx, 1);
   }
-
-  // console.log(idx);
+  if (minusBtn) {
+    updateCart(idx, -1);
+  }
+  if (deleteBtn) {
+    removeItem(idx);
+  }
 });
 
 function updateCart(idx, change) {
@@ -182,10 +182,38 @@ function updateCart(idx, change) {
   if (change > 0 && product.qty > 0) {
     item.qty += 1;
     product.qty -= 1;
-    console.log('item++ : ', item);
-    console.log('product-- : ', product);
+    updateDisplay(item.icon, product.qty);
+  } else if (change < 0 && item.qty > 0) {
+    item.qty -= 1;
+    product.qty += 1;
+    if (item.qty === 0) {
+      removeItem(idx);
+    }
+    updateDisplay(item.icon, product.qty);
   }
   cartUpdate();
+}
+
+function removeItem(idx) {
+  const item = cartArr[idx];
+  const product = productArr.find((product) => product.icon === item.icon);
+
+  product.qty += item.qty;
+  cartArr.splice(idx, 1);
+
+  cartUpdate();
+  updateDisplay(item.icon, product.qty);
+}
+
+function updateDisplay(item, qty) {
+  const productName = document.querySelector(`.${item}`);
+  const productQty = productName.querySelector('.product-qty');
+
+  if (qty === 0) {
+    productQty.innerHTML = '품절';
+  } else {
+    productQty.innerHTML = `수량 : ${qty}개`;
+  }
 }
 
 // 구매 버튼을 누르면

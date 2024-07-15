@@ -57,38 +57,38 @@ body {
   height: 100%;
 }
 .container {
-  padding: 16px;
-  border: 8px solid var(--common-color);
+  padding: 1rem;
+  border: 0.5rem solid var(--common-color);
 }
 
 header {
-  margin-bottom: 16px;
-  padding: 24px;
-  border-radius: 16px;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
   background-color: var(--accent-color);
   color: var(--main-color);
 }
 
 main {
   display: flex;
-  gap: 16px;
+  gap: 1rem;
 }
 
 section {
-  padding: 24px;
+  padding: 1.5rem;
   background-color: var(--common-color);
 }
 
 .title {
-  margin-bottom: 8px;
-  font-size: 24px;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--main-color);
 }
 
 .bg {
-  padding: 16px;
-  border-radius: 8px;
+  padding: 1rem;
+  border-radius: 0.5rem;
   background-color: var(--main-color);
 }
 
@@ -98,10 +98,11 @@ section {
 
 .btn {
   appearance: none;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   border: 0;
   outline: 0;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   background-color: var(--btn-color);
   cursor: pointer;
   transition: 0.3s;
@@ -128,4 +129,52 @@ i[class*='wheat-awn'] {
 }
 i[class*='seedling'] {
   color: var(--green-color);
+}
+
+/* media - desktop */
+@media screen and (min-width: 1200px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+/* media - tablet */
+@media screen and (max-width: 992px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+/* media - mobile */
+@media screen and (max-width: 767px) {
+  :root {
+    font-size: 12px;
+  }
+  html,
+  body {
+    width: 100%;
+    height: fit-content;
+  }
+  header {
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+  }
+  section {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 0.5rem;
+  }
+  .title {
+    font-size: 1.25rem;
+  }
+  .btn {
+    padding: 8px;
+  }
+  .bg {
+    padding: 0.5rem;
+  }
 }
